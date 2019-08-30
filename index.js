@@ -15,7 +15,9 @@ app.group("/api/v1", (router) => {
     //todos API
     router.get('/city', CityController.index); 
     router.get('/city/:id', CityController.show); 
-    router.post('/city/:id', CityController.store); 
+    router.post('/city/:id', CityController.store);
+    router.patch('/city/:id', CityController.update)
+    router.delete('/city/:id', CityController.delete)
     //another APIs goes here
 })
 
