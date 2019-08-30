@@ -13,12 +13,9 @@ const CityController = require('./controllers/city')
 app.group("/api/v1", (router) => {
 
     //todos API
-    router.get('/City', CityController.index)    
-    // router.get('/todo/:id', TodosController.show)    
-    // router.post('/todo', TodosController.store)    
-    // router.patch('/todo/:id', TodosController.update)    
-    // router.delete('/todo/:id', TodosController.delete)
-
+    router.get('/city', CityController.index); 
+    router.get('/city/:id', CityController.show); 
+    router.post('/city/:id', CityController.store); 
     //another APIs goes here
 })
 
