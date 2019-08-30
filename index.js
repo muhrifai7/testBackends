@@ -7,6 +7,10 @@ const port = 5000
 
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+        return res.send('Welcome to Express heroku APi')
+    })
+
 //controllers
 const CityController = require('./controllers/city')
 
