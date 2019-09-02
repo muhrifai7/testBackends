@@ -1,29 +1,31 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('cities', {
+    return queryInterface.createTable('menus', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      menus: {
         type: Sequelize.STRING
       },
-      photo: {
-        type: Sequelize.BLOB
+      price: {
+        type: Sequelize.DOUBLE
       },
-      isFavorite: {
-        type: Sequelize.BOOLEAN
+      img: {
+        type: Sequelize.STRING
       },
-      createdBy: {
+      categorieId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: 'users',
-            // include: users.name
-        }
+            model: 'categories',
+            key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +38,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('cities');
+    return queryInterface.dropTable('menus');
   }
 };
