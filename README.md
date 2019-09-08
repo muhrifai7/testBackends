@@ -61,6 +61,25 @@ npx sequelize-cli model:generate --name user --attributes email:string,password:
 release: node_modules/.bin/sequelize db:migrate
 web: node index.js
 ```
+## Resources
+
+``` javascript
+app.group("/api/v1", (router) => {
+
+
+    //Categories API
+    router.get('/categories', CategoriesController.index); 
+    router.get('/categorie/:id', CategoriesController.show); 
+    router.get('/categorie/menus/:idCategory',CategorieMenusController.show);
+
+    //Menu API
+    router.get('/menus', menuController.index);  
+    router.get('/menu/:id', menuController.show); 
+    router.get('/menus/:id', menuController.list); 
+    
+})
+
+```
 
 ## License
 
