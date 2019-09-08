@@ -12,7 +12,17 @@ exports.index = (req, res) => {
 }
 
 exports.show = (req, res) => {
-    Categories.findOne({where: {id: req.params.id}})
+    Categories.findOne(
+        {
+        where: {id: req.params.id}
+    },
+    {
+        include: [
+            {
+                model: Menu
+            }
+        ],
+    })
         .then(categorie => {
             if (!categorie) {
                 return res.status(404).send({

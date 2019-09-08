@@ -25,6 +25,18 @@ exports.show = (req, res) => {
         })
         .catch(err => res.status(400).send(err))
 }
+exports.list = (req, res) => {
+    Menu.findAll({where: {id: req.params.id.Categorie}})
+        .then(menu => {
+            if (!menu) {
+                return res.status(404).send({
+                    message: `Menu with id ${req.params.id} is not found!`,
+                })
+            }
+            return res.status(200).send(menu)
+        })
+        .catch(err => res.status(400).send(err))
+}
 
 exports.store = (req, res) => {
     // Object.assign(req.body, {created_by: req.user.id})
