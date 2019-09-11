@@ -8,8 +8,7 @@ const port = 5000
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-        return res.send('Categories menu : /categories/:id',
-            'menus : /menus'
+        return res.send('Categories menu : /categories/:id'
         )
     })
 
