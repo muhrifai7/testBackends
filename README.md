@@ -2,7 +2,7 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/ntkme/github-buttons/master.svg)](https://circleci.com/gh/ntkme/github-buttons)
 
 ## Description
-This is a example repo for showing built simple rest API use express with React Native.Back-end repo in Heroku [here](https://github.com/muhrifai7/testBackends), Enjoy and feel free to contact me with any questions :).
+This is a example repo for showing built simple rest API use express with React Native.Back-end repo in Heroku [here](https://github.com/muhrifai7/testBackends),Already deployed to Heroku [here](https://foodappss.herokuapp.com), Enjoy and feel free to contact me with any questions :).
 
 ## Pre Installation Heroke
 ### In This Tutorial Im Using Heroku Cli
@@ -60,6 +60,25 @@ npx sequelize-cli model:generate --name user --attributes email:string,password:
 ``` javascript
 release: node_modules/.bin/sequelize db:migrate
 web: node index.js
+```
+## Resources
+
+``` javascript
+app.group("/api/v1", (router) => {
+
+
+    //Categories API
+    router.get('/categories', CategoriesController.index); 
+    router.get('/categorie/:id', CategoriesController.show); 
+    router.get('/categorie/menus/:idCategory',CategorieMenusController.show);
+
+    //Menu API
+    router.get('/menus', menuController.index);  
+    router.get('/menu/:id', menuController.show); 
+    router.get('/menus/:id', menuController.list); 
+    
+})
+
 ```
 
 ## License
