@@ -1,15 +1,12 @@
 const Order = require('../models').order
-const Transaction = require('../models').transaction
+const Menu = require('../models').menu
 
 exports.index = (req, res) => {
-    Order.findAll({
-        include: [
-        {
-            model: Transaction
-        }
-    ],
-    }).then(users=>res.send(users))
+    Order.findAll({})
+        .then(order => res.status(200).send(order))
+        .catch(err => res.status(400).send(err))
 }
+
 
 exports.show = (req, res) => {
     Order.findOne({where: {id: req.params.id}})
@@ -25,13 +22,9 @@ exports.show = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    Order.create(req.body).then(Order=> {
-        res.send({
-            message: "success",
-           Order
-        })
+    Order.create(req.body)
+        .then(order => res.status(201).send(order))
         .catch(err => res.status(400).send(err))
-    })
 }
 
 exports.update = (req, res) => {

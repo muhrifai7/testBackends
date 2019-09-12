@@ -4,13 +4,9 @@ const Order = require('../models').order
 
 
 exports.index = (req, res) => {
-    Menu.findAll({
-        include: [
-            {
-                model: Order
-            }
-        ],
-    }).then(users=>res.send(users))
+    Menu.findAll({})
+        .then(menu => res.status(200).send(menu))
+        .catch(err => res.status(400).send(err))
 }
 
 exports.show = (req, res) => {

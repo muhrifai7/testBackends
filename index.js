@@ -45,8 +45,8 @@ app.group("/api/v1", (router) => {
     router.patch('/order/:id', orderController.update); 
     router.delete('/order/:id', orderController.delete);
 
-    router.get('/transactions', transactionController.index); 
-    router.get('/transaction/:id', transactionController.show); 
+    router.get('/transactions', transactionController.index);
+    router.get('/transaction/order/:id', transactionController.show); 
     router.post('/transaction', transactionController.store);
     router.patch('/transaction/:id', transactionController.update); 
     router.delete('/transaction/:id', transactionController.delete);
