@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.DOUBLE
       },
       is_paid: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

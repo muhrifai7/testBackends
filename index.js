@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 require('express-group-routes')
 
 const app = express()
-const port = 5000
+const port = 5001
 
 app.use(bodyParser.json())
 
@@ -29,7 +29,7 @@ app.group("/api/v1", (router) => {
     router.patch('/categories/:id', CategoriesController.update); 
     router.delete('/categories/:id', CategoriesController.delete);
 
-    router.get('/categorie/menus/:idCategory',CategorieMenusController.show);
+    router.get('/categorie/menus/:created_by',CategorieMenusController.show);
 
     router.get('/menus', menuController.index);  
     router.get('/menu/:id', menuController.show); 
@@ -49,11 +49,9 @@ app.group("/api/v1", (router) => {
     router.get('/transaction/order/:id', transactionController.show); 
     router.post('/transaction', transactionController.store);
     router.patch('/transaction/:id', transactionController.update); 
-    router.delete('/transaction/:id', transactionController.delete);
-    
     //another APIs goes here
 })
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log(`Listening...`)
+app.listen(process.env.PORT || 5001, () => {
+    console.log(`Listening...${port}`)
 })

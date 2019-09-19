@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   menu.associate = function(models) {
     // associations can be defined here
+    // menu.hasMany(models.order),
     menu.belongsTo(models.categorie)
   };
   return menu;

@@ -11,6 +11,6 @@ exports.show = (req, res) => {
         model: Menu,
       }
     ],
-    where: { id: req.params.idCategory }
+    where: { id: req.params.created_by }
   }).then(data => res.send(data))
 }

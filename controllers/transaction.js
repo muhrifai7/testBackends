@@ -1,6 +1,6 @@
 const Transaction = require('../models').transaction
-const Order = require('../models').order
-const Menu= require('../models').menu
+// const Order = require('../models').order
+// const Menu= require('../models').menu
 
 exports.index = (req, res) => {
     Transaction.findAll({})
@@ -22,38 +22,37 @@ exports.show = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    Transaction.create(req.body).then(transaction=> {
-        res.send({
-            message: "success",
-           transaction
-        })
+    Transaction.create(req.body)
+        .then(transaction => res.status(201).send(transaction))
         .catch(err => res.status(400).send(err))
-    })
 }
 
+
+exports.update = (req, res) => {
+    console.log( req.params.id)
+    Transaction.findOne({ where: {id: req.params.id }})
+        .then(transaction => {
+            return transaction.update(req.body)
+        })
+        .catch(err => res.status(400).send(err))
+}
 // exports.update = (req, res) => {
-//     Transaction.findOne({ where: {id: req.params.id }})
+//     console.log( req.params.id)
+//     Transaction.findOne({where: {id: req.params.id}})
 //         .then(transaction => {
-//             return transaction.update(req.body)
+//             if(!transaction) {
+//                 return res.status(404).send({
+//                     message:`transaction with id ${req.params.id} is not found!`
+//                 })
+//             }
+//             return transaction.update(
+//                 req.body
+//             )
+//                 // .then((transaction) => res.status(200).send(transaction))
+//                 // .catch(err => res.status(400).send(err))
 //         })
 //         .catch(err => res.status(400).send(err))
 // }
-exports.update = (req, res) => {
-    Transaction.findOne({where: {id: req.params.id}})
-        .then(Order => {
-            if(!Order) {
-                return res.status(404).send({
-                    message:`Order with id ${req.params.id} is not found!`
-                })
-            }
-            return Transaction.update(
-                req.body
-            )
-                .then((Order) => res.status(200).send(Order))
-                .catch(err => res.status(400).send(err))
-        })
-        .catch(err => res.status(400).send(err))
-}
 
 exports.delete = (req, res) => {
     Transaction.findOne({where: {id: req.params.id}})
